@@ -1,0 +1,7 @@
+# these are the packages the app needs to run
+# scikit-learn version has to match what i used on kaggle (1.6.1)
+# otherwise the pkl files won't load properly - learned this the hard way
+
+* streamlit
+* pandas
+* scikit-learn==1.6.1
