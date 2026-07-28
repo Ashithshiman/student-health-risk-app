@@ -5,7 +5,6 @@ import pickle
 # basic page setup - centered layout looks cleaner for a form like this
 st.set_page_config(
     page_title="Student Health Risk Predictor",
-    page_icon="🩺",
     layout="centered",
 )
 
@@ -54,8 +53,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# loading the model and the encoders once, so the app doesn't reload them
-# every time someone clicks the button
+# loading the model and the encoders once, so the app doesn't reload them every time someone clicks the button
 @st.cache_resource
 def load_artifacts():
     # using gradient boosting now instead of random forest
@@ -74,8 +72,7 @@ def load_artifacts():
 
 model, encoders, columns = load_artifacts()
 
-# leaving this here in case the columns don't line up again later
-# st.write("Expected columns:", columns)
+# leaving this here in case the columns don't line up again latert  st.write("Expected columns:", columns)
 
 # page title and short description
 st.title("Student Health Risk Predictor")
@@ -104,8 +101,7 @@ with st.form("input_form"):
         diet_type = st.selectbox("Diet type", encoders["diet_type"].classes_)
         smoking_alcohol = st.selectbox("Smoking / alcohol", encoders["smoking_alcohol"].classes_)
 
-    # these two were missing before and caused a KeyError when predicting
-    # the model needs every column it was trained on, so adding them here
+    # these two were missing before and caused a KeyError when predicting the model needs every column it was trained on, so adding them here
     st.markdown("**Other**")
     c5, c6 = st.columns(2)
     with c5:
@@ -120,8 +116,7 @@ with st.form("input_form"):
 # runs only after the button is clicked
 if submitted:
 
-    # putting everything into one row, encoding the text fields the same
-    # way they were encoded during training
+    # putting everything into one row, encoding the text fields the same way they were encoded during training
     raw_input = {
         "sleep_duration": sleep_duration,
         "sleep_quality": encoders["sleep_quality"].transform([sleep_quality])[0],
@@ -145,7 +140,7 @@ if submitted:
     proba = model.predict_proba(input_df)[0]
     proba_dict = dict(zip(model.classes_, proba))
 
-    # simple colour per result instead of the default streamlit success/error boxes
+    # simple colour per result instead of the  streamlit colur
     colour_map = {
         "at-risk": ("#fef2f2", "#991b1b"),
         "unhealthy": ("#fffbeb", "#92400e"),
