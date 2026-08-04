@@ -4,7 +4,7 @@ A machine learning web app that predicts a student's health risk category (fit, 
 
 Built as part of the CIS6005 Computational Intelligence mini project at Cardiff Metropolitan University.
 
-**Live app:** https://student-health-risk-app-4wcupklrsfcuyzqrf6hdry.streamlit.app/
+**Live app:** https://student-health-risk-app-njq4rqkcdfl3e3sh7c946g.streamlit.app/
 
 ## What it does
 
